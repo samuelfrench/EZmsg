@@ -12,10 +12,8 @@ public class GlobalDataModel {
 	
 	public GlobalDataModel(){
 		postMap = new HashMap<>();
-		Integer i = 0;
-		PostModel post = new PostModel();
-		post.post = "This means you have started the server successfully!!";
-		postMap.put(i, post);
+		addPost(0,"1st Post");
+		addPost(1,"2nd Post");
 	}
 	
 	public PostModel getPost(Integer postId){
@@ -29,5 +27,15 @@ public class GlobalDataModel {
 			//log error - TODO
 			return "NOT FOUND ERROR!";
 		}
+	}
+	
+	private void addPost(Integer index, String message){
+		PostModel post = new PostModel();
+		if(message == null){
+			message = "This means you have started the server successfully!!";
+		}
+		post.post = message;
+		//Integer i = postMap.keySet().size();
+		postMap.put(index, post);
 	}
 }
